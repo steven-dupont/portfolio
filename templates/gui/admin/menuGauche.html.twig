@@ -1,0 +1,94 @@
+<nav class="navbar navbar-light navbar-vertical navbar-expand-xl">
+    <script>
+        var navbarStyle = localStorage.getItem("navbarStyle");
+        if (navbarStyle && navbarStyle !== 'transparent') {
+            document.querySelector('.navbar-vertical').classList.add(`navbar-${navbarStyle}`);
+        }
+    </script>
+    <div class="d-flex align-items-center">
+        <div class="toggle-icon-wrapper">
+            <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="Ouvrir/Fermer">
+                <span class="navbar-toggle-icon">
+                    <span class="toggle-line"></span>
+                </span>
+            </button>
+        </div>
+        <a class="navbar-brand" href="{{ path('admin.contact.show') }}">
+            <div class="d-flex align-items-center py-3">
+                <img class="me-2" src="{{ asset('assets/admin/img/icons/spot-illustrations/falcon.png') }}" alt="" width="40" />
+                <span class="font-sans-serif">Portfolio</span>
+            </div>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
+        <div class="navbar-vertical-content scrollbar">
+            <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
+{#                <li class="nav-item">#}
+{#                    <div class="d-flex align-items-center">#}
+{#                        <a class="nav-link {% if menu_active == 'index' %}active{% endif %}" href="{{ path('admin.contact.show') }}" role="button">#}
+{#                            <div class="d-flex align-items-center">#}
+{#                                <span class="nav-link-icon">#}
+{#                                    <span class="fas fa-home"></span>#}
+{#                                </span>#}
+{#                                <span class="nav-link-text ps-1">Accueil</span>#}
+{#                            </div>#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </li>#}
+                <br>
+                <li class="nav-item">
+                    <div class="d-flex align-items-center">
+                        <a class="nav-link {% if menu_active == 'contact' %}active{% endif %}" href="{{ path('admin.contact.show') }}" role="button">
+                            <div class="d-flex align-items-center">
+                                <span class="nav-link-icon">
+                                    <span class="fas fa-envelope"></span>
+                                </span>
+                                <span class="nav-link-text ps-1">Contact</span>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dropdown-indicator" href="#gestion" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="gestion">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon">
+                                <span class="bi bi-pencil-fill"></span>
+                            </span>
+                            <span class="nav-link-text ps-1">Gestion</span>
+                        </div>
+                    </a>
+                    <ul class="nav collapse {% if menu_active == 'competence' or menu_active == 'experience' or menu_active == 'formation' or menu_active == 'projet' %}show{% endif %}" id="gestion">
+                        <li class="nav-item">
+                            <a class="nav-link {% if menu_active == 'competence' %}active{% endif %}" href="{{ path('admin.competence.show') }}">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Compétences</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if menu_active == 'experience' %}active{% endif %}" href="{{ path('admin.experience.show') }}">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Experiences</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if menu_active == 'formation' %}active{% endif %}" href="{{ path('admin.formation.show') }}">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Formations</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if menu_active == 'projet' %}active{% endif %}" href="{{ path('admin.projet.show') }}">
+                                <div class="d-flex align-items-center">
+                                    <span class="nav-link-text ps-1">Projets</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

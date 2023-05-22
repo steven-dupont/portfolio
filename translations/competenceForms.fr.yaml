@@ -1,0 +1,9 @@
+competence:
+  label:
+    nom: "Nom"
+    type: "Type de la compétence"
+    framework: "Framework"
+
+  placeholder:
+    nom: "Nom de la compétence"
+    framework: "Symfony"

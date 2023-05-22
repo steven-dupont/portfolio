@@ -1,0 +1,14 @@
+#Options -Indexes
+##Errordocument 403 /erreurs/erreur.php?type=403
+##Errordocument 404 /erreurs/erreur.php?type=404
+#
+#RewriteEngine On
+#RewriteCond %{HTTPS} off [OR]
+#RewriteCond %{HTTP_HOST} ^www\.neon-info\.fr$ [NC]
+#RewriteRule (.*) https://neon-info.fr/$1 [R=301,L]
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>

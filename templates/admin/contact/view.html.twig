@@ -1,0 +1,142 @@
+{% extends 'gui/admin/base.html.twig' %}
+
+{% block title %}{{ infoContact.nom }} - Contact - Administration | Portfolio{% endblock %}
+
+{% block body %}
+    <div class="d-flex mb-4 mt-3">
+        <span class="fa-stack me-1 ms-n1">
+            <i class="fas fa-circle fa-stack text-300"></i>
+            <i class="fa-inverse fa-stack-1x text-danger fas fa-envelope"></i>
+        </span>
+        <div class="col">
+            <h5 class="mb-0 text-danger position-relative">
+                <span class="bg-200 dark__bg-1100 pe-3">Contact</span>
+                <span class="border position-absolute top-50 translate-middle-y w-100 start-0 z-n1"></span>
+            </h5>
+            <p class="mb-0">Cette page vous permet de voir la demande de contact.</p>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-lg-12 ps-lg-2">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Parfait :</strong> {{ message }}
+                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            <div class="row g-3">
+                <div class="col-xxl-9 col-xl-8">
+                    <div class="card">
+                        <div class="card-header d-flex flex-between-center">
+                            <a href="{{ path('admin.contact.show') }}" class="btn btn-falcon-default btn-sm" type="button">
+                                <span class="fas fa-arrow-left"></span>
+                            </a>
+                            <div class="d-flex">
+                                <form method="post" action="{{ path('admin.contact.delete', {id: infoContact.id}) }}" style="display: inline-block" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer la demande de contact de  \'{{ infoContact.nom }}\' ?')">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ infoContact.id) }}">
+                                    <button class="btn btn-falcon-danger btn-sm ms-2 d-none d-sm-block">
+                                        <span class="bi bi-trash-fill" data-fa-transform="shrink-2 down-1"></span>
+                                        <span class="d-none d-md-inline-block ms-1">Supprimer</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mt-3">
+                        <div class="card-header bg-light">
+                            <h5>
+                                <span class="fas fa-envelope me-2"></span>
+                                <span>Demande de contact</span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-md-flex d-xl-inline-block d-xxl-flex align-items-center justify-content-between mb-x1">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="avatar avatar-xl">
+                                        <div class="avatar-name rounded-circle">
+                                            <span>{{ infoContact.nom | first }}</span>
+                                        </div>
+                                    </div>
+                                    <p class="mb-0">
+                                        <span class="fw-semi-bold mb-0 text-800">{{ infoContact.nom }}</span>
+                                        <span class="fs--2 text-800 fw-normal mx-2">via le formulaire de contact</span>
+                                        <a class="mb-0 fs--1 d-block text-500" href="mailto:{{ infoContact.mail }}">{{ infoContact.mail }}</a>
+                                    </p>
+                                </div>
+                                <p class="mb-0 fs--2 fs-sm--1 fw-semi-bold mt-2 mt-md-0 mt-xl-2 mt-xxl-0 ms-5">
+                                    {{ infoContact.date | date('d/m/Y à H:i') }}
+                                </p>
+                            </div>
+                            <div>
+                                <p>{{ infoContact.message }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-3 col-xl-4">
+                    <div class="row g-3 position-sticky top-0">
+                        <div class="col-md-6 col-xl-12">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">Statut</h6>
+                                </div>
+                                <div class="card-body">
+                                    {{ form_start(contactStatutForm) }}
+                                        {{ form_row(contactStatutForm.statut) }}
+                                        <button class="btn btn-primary w-100 mt-3" type="submit">Mettre à jour</button>
+                                    {{ form_end(contactStatutForm) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">Informations</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-0 border-bottom pb-x1 mb-x1 align-items-sm-center align-items-xl-start">
+                                        <div class="col-12 col-sm-auto col-xl-12 me-sm-3 me-xl-0">
+                                            <div class="avatar avatar-xl">
+                                                <div class="avatar-name rounded-circle">
+                                                    <span>{{ infoContact.nom | first }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-auto col-xl-12">
+                                            <p class="fw-semi-bold text-800 mb-0">{{ infoContact.nom }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row g-0 justify-content-lg-between">
+                                        <div class="col-auto col-md-12">
+                                            <div class="row">
+                                                <div class=" mb-4 mb-md-0 mb-xl-4">
+                                                    <h6 class="mb-1">Mail</h6>
+                                                    <a class="fs--1" href="mailto:{{ infoContact.mail }}">{{ infoContact.mail }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto col-md-12 ps-md-5 ps-xl-0">
+                                            <h6 class="d-flex align-items-center mb-1">
+                                                <span class="me-2">Statut :</span>
+                                                {% if infoContact.statut == 0 %}
+                                                    <span class="badge text-bg-danger">Non traité</span>
+                                                {% elseif infoContact.statut == 1 %}
+                                                    <span class="badge text-bg-warning">En cours de traitement</span>
+                                                {% elseif infoContact.statut == 2 %}
+                                                    <span class="badge text-bg-success">Traité</span>
+                                                {% else %}
+                                                    <span class="badge text-bg-danger">N/A</span>
+                                                {% endif %}
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

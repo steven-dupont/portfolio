@@ -1,0 +1,24 @@
+profil:
+  label:
+    email: "Mail"
+    nom: "Nom"
+    prenom: "Prénom"
+    ville: "Ville"
+    telephone: "Téléphone"
+    presentation: "Présentation"
+    site: "Site web"
+    permis: "Permis"
+    linkedin: "Linkedin"
+    jobs: "Je suis intéressé par les jobs suivants"
+
+  placeholder:
+    email: "Votre email"
+    nom: "Votre nom"
+    prenom: "Votre prénom"
+    ville: "Votre ville"
+    telephone: "Votre téléphone"
+    presentation: "Votre présentation"
+    site: "https://neon-info.fr"
+    permis: "Permis"
+    linkedin: "Linkedin"
+    jobs: "job1, job2, job3"

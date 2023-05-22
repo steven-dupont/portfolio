@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Steven Dupont | Portfolio{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+        <link href="assets/public/vendor/aos/aos.css" rel="stylesheet">
+        <link href="assets/public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/public/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="assets/public/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="assets/public/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="assets/public/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="assets/public/css/style.css" rel="stylesheet">
+        {% block stylesheets %}
+
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="assets/public/vendor/purecounter/purecounter_vanilla.js"></script>
+        <script src="assets/public/vendor/aos/aos.js"></script>
+        <script src="assets/public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/public/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="assets/public/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="assets/public/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="assets/public/vendor/typed.js/typed.min.js"></script>
+        <script src="assets/public/vendor/waypoints/noframework.waypoints.js"></script>
+        <script src="assets/public/js/main.js"></script>
+        {% block javascripts %}
+
+        {% endblock %}
+    </body>
+</html>

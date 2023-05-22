@@ -1,0 +1,11 @@
+formation:
+  label:
+    poste: "Nom"
+    date: "Date"
+    localisation: "Lieu"
+    contenu: "Contenu"
+
+  placeholder:
+    poste: "BTS SIO option SISR"
+    date: "Septembre 2022 - Aujourd'hui"
+    localisation: "CCI Campus Centre, Châteauroux, France"

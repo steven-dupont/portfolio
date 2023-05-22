@@ -1,0 +1,11 @@
+experience:
+  label:
+    poste: "Poste"
+    date: "Date"
+    localisation: "Lieu"
+    contenu: "Contenu"
+
+  placeholder:
+    poste: "Administrateur système & réseau"
+    date: "Septembre 2022 - Aujourd'hui"
+    localisation: "Covepa Michels, Montierchaume, France"

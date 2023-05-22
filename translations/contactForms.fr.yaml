@@ -1,0 +1,5 @@
+contact:
+  placeholder:
+    nom: "Votre nom"
+    mail: "Votre mail"
+    message: "Votre message"

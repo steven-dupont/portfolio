@@ -1,0 +1,262 @@
+{% extends 'gui/public/base.html.twig' %}
+
+{% block title %}Steven Dupont | Portfolio{% endblock %}
+
+{% block body %}
+    {% include 'gui/public/menu.html.twig' %}
+    <section id="accueil" class="d-flex flex-column justify-content-center">
+        <div class="container" data-aos="zoom-in" data-aos-delay="100">
+            <h1>{{ utilisateur.prenom }}  {{ utilisateur.nom }}</h1>
+            <p><span class="typed" data-typed-items="{{ utilisateur.jobs }}"></span></p>
+{#            <div class="social-links">#}
+{#                <a href="https://www.linkedin.com/in/steven-dupont/" target="_blank" class="linkedin">#}
+{#                    <i class="bx bxl-linkedin text-primary"></i>#}
+{#                </a>#}
+{#            </div>#}
+        </div>
+    </section>
+
+    <main id="main">
+        <section id="a-propos" class="about">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>À propos</h2>
+                        <p>{{ utilisateur.presentation }}</p>
+                </div>
+                <div class="row" style="justify-content: center">
+                    <div class="col-lg-4">
+                        <img src="{{ asset('assets/public/img/presentation/costume.JPG') }}" class="img-fluid rounded" alt="" width="500px" height="200px">
+                    </div>
+                    <div class="col-lg-4 pt-4 pt-lg-0 content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul>
+                                    <li>
+                                        <i class="bi bi-chevron-right"></i>
+                                        <strong>Naissance :</strong> <p>{{ naissance }}</p>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-chevron-right"></i>
+                                        <strong>Âge :</strong> <span>{{ age }} ans</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-chevron-right"></i>
+                                        <strong>Site web :</strong> <a href="{{ utilisateur.site }}" data-turbolinks="false" target="_blank">{{ utilisateur.site }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-12">
+                                <ul>
+                                    <li>
+                                        <i class="bi bi-chevron-right"></i>
+                                        <strong>Mail:</strong> <a href="mailto:{{ utilisateur.email }}">{{ utilisateur.email }}</a>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-chevron-right"></i>
+                                        <strong>Ville :</strong> <span>{{ utilisateur.ville }}</span>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-chevron-right"></i>
+                                        <strong>Téléphone :</strong> <a href="tel:{{ utilisateur.telephone }}">{{ utilisateur.telephone }}</a>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-chevron-right"></i>
+                                        <strong>Permis :</strong> <span>{{ utilisateur.permis }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="competences" class="competences section-bg">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Compétences</h2>
+                </div>
+                <div class="row competences-content">
+                    <div class="col-lg-6">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th class="align-middle text-center">Réseau</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for competencesReseau in competenceReseau %}
+                                    <tr class="align-middle text-center">
+                                        <td class="text-nowrap">{{ competencesReseau.nom }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th class="align-middle text-center" colspan="2">Développement</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="align-middle text-center">
+                                    <th class="text-nowrap">Langage</th>
+                                    <th class="text-nowrap">Framework</th>
+                                </tr>
+                                    {% for competencesDeveloppement in competenceDeveloppement %}
+                                        <tr class="align-middle text-center">
+                                            <td class="text-nowrap">{{ competencesDeveloppement.nom }}</td>
+                                            <td class="text-nowrap">
+                                                {% if competencesDeveloppement.framework is not null %}
+                                                    {{ competencesDeveloppement.framework }}
+                                                {% else %}
+                                                    <span class="badge text-bg-danger">N/A</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cv" class="resume">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Formation & Expérience</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3 class="resume-title">Formation</h3>
+                        {% for formations in formation %}
+                            <div class="resume-item">
+                                <h4>{{ formations.poste }}</h4>
+                                <h5>{{ formations.date }}</h5>
+                                <p><em>{{ formations.localisation }}</em></p>
+                                <span>{{ formations.contenu | raw }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="resume-title">Expérience professionnelle</h3>
+                        {% for experiences in experience %}
+                            <div class="resume-item">
+                                <h4>{{ experiences.poste }}</h4>
+                                <h5>{{ experiences.date }}</h5>
+                                <p><em>{{ experiences.localisation }}</em></p>
+                                <span>{{ experiences.contenu | raw }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projets" class="projets section-bg">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Projets</h2>
+                    <p>J'ai travaillé sur plusieurs projets, chacun étant unique en son genre et offrant des défis passionnants. Certains projets ont exigé une compréhension approfondie des besoins des utilisateurs finaux, ainsi que des processus métier, afin de livrer des solutions qui répondent à leurs attentes. Ces projets m'ont permis d'acquérir de nouvelles compétences et de développer mes connaissances techniques en utilisant diverses technologies. J'ai trouvé chaque projet stimulant et gratifiant, et cela m'a encouragé à poursuivre ma passion pour l'informatique. En somme, je suis enthousiaste à l'idée de travailler sur de nouveaux projets passionnants qui me permettront de repousser mes limites et d'apporter une valeur ajoutée à mes clients.</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                        <ul id="portfolio-flters">
+                            <li data-filter="*" class="filter-active">Tous</li>
+                            {% for projetType in projet_type %}
+                                <li data-filter=".filter-{{ projetType.nom }}">{{ projetType.nom }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                    {% for projet in projets %}
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-{{ projet.type_nom }}">
+                            <div class="portfolio-wrap">
+                                {% if projet.imageName is not null %}
+                                    <img src="{{ vich_uploader_asset(projet, 'imageFile', 'App\\Entity\\Projet') }}" class="img-projets" alt="">
+                                {% else %}
+                                    <img src="{{ asset('assets/public/img/projets/a-venir.webp') }}" class="img-projets" alt="">
+                                {% endif %}
+                                <div class="portfolio-info">
+                                    <h4>{{ projet.nom }}</h4>
+                                    <p>{{ projet.type_nom }}</p>
+                                    <div class="portfolio-links">
+                                        {% if projet.telechargement != 0 %}
+                                        <a href="{{ projet.lien_telechargement }}" target="_blank" title="Télecharger le code source"><i class="bx bx-code-alt"></i></a>
+                                        {% endif %}
+                                        {% if projet.visuel != 0 %}
+                                        <a href="{{ projet.lien_visuel }}" target="_blank" title="Lien vers Séraphin Parys"><i class="bx bx-link"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Une question ?</h2>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-lg-4">
+                        <div class="info">
+                            <div class="email">
+                                <i class="bi bi-envelope"></i>
+                                <h4>Mail :</h4>
+                                <p><a href="mailto:{{ utilisateur.email }}">{{ utilisateur.email }}</a></p>
+                            </div>
+                            <div class="phone">
+                                <i class="bi bi-phone"></i>
+                                <h4>Téléphone :</h4>
+                                <p><a href="tel:{{ utilisateur.telephone }}">{{ utilisateur.telephone }}</a></p>
+                            </div>
+                            <div class="phone">
+                                <i class="bi bi-clipboard-check"></i>
+                                <h4>CV :</h4>
+                                <p><a href="{{ asset('assets/CV.pdf') }}" target="_blank">Voir mon CV</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 mt-5 mt-lg-0">
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Parfait :</strong> {{ message }}
+                                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                        {{ form_start(contactForm) }}
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    {{ form_row(contactForm.nom) }}
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    {{ form_row(contactForm.mail) }}
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                {{ form_row(contactForm.message) }}
+                            </div>
+                            <div class="text-center">
+                                <button type="submit">Envoyer</button>
+                            </div>
+                        {{ form_end(contactForm) }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    {% include 'gui/public/footer.html.twig' %}
+    {% include 'gui/public/preloader.html.twig' %}
+{% endblock %}

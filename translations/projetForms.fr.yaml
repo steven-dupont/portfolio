@@ -1,0 +1,15 @@
+projet:
+  label:
+    nom: "Nom"
+    image: "Image"
+    lien_visuel: "Lien visuel"
+    lien_telechargement: "Lien du téléchargement"
+    telechargement: "Téléchargement"
+    visuel: "Visuel"
+    type: "Type du projet"
+
+  placeholder:
+    nom: "Nom"
+    lien_visuel: "Lien visuel"
+    lien_telechargement: "Lien du téléchargement"
+    type: "Type du projet"
